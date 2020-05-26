@@ -21,8 +21,8 @@ def main():
 
     clock = pygame.time.Clock()
 
-    particles = Group([Particle(random.randint(0, width), random.randint(0, height), 4)
-                       for _ in range(1000)])
+    particles = Group([Particle(random.randint(0, width), random.randint(0, height), 8, screen)
+                       for _ in range(100)])
 
     while True:
         clock.tick(60)

@@ -21,8 +21,8 @@ def main():
 
     clock = pygame.time.Clock()
 
-    particles = Group([Particle(random.randint(0, width), random.randint(0, height), 4, screen)
-                       for _ in range(5)])
+    particles = Group([Particle(random.gauss(width/2, 100), random.gauss(height/2, 100), 2, screen)
+                       for _ in range(1000)])
 
     qtree = Quadtree(screen.get_rect(), 4, screen)
     for p in particles:
@@ -40,6 +40,8 @@ def main():
         particles.update()
 
         particles.draw(screen)
+
+        qtree.show()
 
 
         pygame.display.update()

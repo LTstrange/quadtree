@@ -49,7 +49,14 @@ class Quadtree:
 
         self.divided = True
 
+    def show(self):
+        pygame.draw.rect(self.screen, THECOLORS['white'], self.boundary, 1)
 
+        if self.divided:
+            self.northeast.show()
+            self.northwest.show()
+            self.southeast.show()
+            self.southwest.show()
 
 
 

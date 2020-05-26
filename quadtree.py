@@ -17,7 +17,7 @@ class Quadtree:
         self.screen = screen
 
     def insert(self, particle, depth=0):
-        if not self.boundary.collidepoint(particle.x, particle.y):
+        if not self.boundary.collidepoint(particle.rect.centerx, particle.rect.centery):
             return False
         if len(self.points) < self.capacity:
             # particle.highlight = True
@@ -60,13 +60,14 @@ class Quadtree:
             self.southwest.show()
 
     def query(self, rect: Rect):
+        found = set()
         if self.boundary.colliderect(rect):
             for p in self.points:
                 if rect.collidepoint(p.x, p.y):
-                    p.highlight = True
-                    pass
+                    found.add(p)
             if self.divided:
-                self.northeast.query(rect)
-                self.northwest.query(rect)
-                self.southeast.query(rect)
-                self.southwest.query(rect)
+                found.update(self.northeast.query(rect))
+                found.update(self.northwest.query(rect))
+                found.update(self.southeast.query(rect))
+                found.update(self.southwest.query(rect))
+        return found

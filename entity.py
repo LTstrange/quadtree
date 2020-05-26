@@ -23,6 +23,9 @@ class Particle(Sprite):
 
         self.highlight = False
 
+        # debug
+        self.tile = None
+
     def update(self, *args):
         # self.x += random.gauss(0, 1)
         # self.y += random.gauss(0, 1)
@@ -34,6 +37,6 @@ class Particle(Sprite):
         self.rect.centery %= self.screen_rect.height
 
         if self.highlight:
-            pygame.draw.ellipse(self.image, THECOLORS['white'], (0, 0, self.r * 2, self.r * 2))
+            pygame.draw.ellipse(self.image, THECOLORS['green'], (0, 0, self.r * 2, self.r * 2))
         else:
-            pygame.draw.ellipse(self.image, THECOLORS['darkgray'], (0, 0, self.r * 2, self.r * 2))
+            pygame.draw.ellipse(self.image, THECOLORS['red'], (0, 0, self.r * 2, self.r * 2))

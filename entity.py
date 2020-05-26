@@ -24,8 +24,8 @@ class Particle(Sprite):
         self.highlight = False
 
     def update(self, *args):
-        self.x += random.gauss(0, 1)
-        self.y += random.gauss(0, 1)
+        # self.x += random.gauss(0, 1)
+        # self.y += random.gauss(0, 1)
 
         self.rect.centerx = self.x
         self.rect.centery = self.y

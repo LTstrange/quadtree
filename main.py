@@ -8,7 +8,7 @@ import pygame
 from pygame.color import THECOLORS
 from pygame.sprite import Group
 from entity import Particle
-
+from quadtree import Quadtree
 
 width = 600
 height = 600
@@ -21,8 +21,12 @@ def main():
 
     clock = pygame.time.Clock()
 
-    particles = Group([Particle(random.randint(0, width), random.randint(0, height), 8, screen)
-                       for _ in range(100)])
+    particles = Group([Particle(random.randint(0, width), random.randint(0, height), 4, screen)
+                       for _ in range(5)])
+
+    qtree = Quadtree(screen.get_rect(), 4, screen)
+    for p in particles:
+        qtree.insert(p)
 
     while True:
         clock.tick(60)
@@ -36,6 +40,7 @@ def main():
         particles.update()
 
         particles.draw(screen)
+
 
         pygame.display.update()
 
